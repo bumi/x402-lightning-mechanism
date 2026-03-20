@@ -1,5 +1,5 @@
 {
-  "name": "@x402/lightning",
+  "name": "@getalby/x402-lightning-mechanism",
   "version": "0.1.0",
   "type": "module",
   "main": "./dist/cjs/index.js",
@@ -27,8 +27,8 @@
     "nostr-wallet-connect"
   ],
   "license": "Apache-2.0",
-  "author": "Alby",
-  "repository": "https://github.com/coinbase/x402",
+  "author": "Alby contributors",
+  "repository": "https://github.com/getAlby/x402-lightning-mechanism",
   "description": "x402 Payment Protocol Lightning Network Implementation using NWC",
   "devDependencies": {
     "@eslint/js": "^9.24.0",

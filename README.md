@@ -1,11 +1,11 @@
-# @x402/lightning
+# X402 mechanism for the Bitcoin lightning network
 
 Lightning Network implementation of the x402 payment protocol using the **Exact** payment scheme with [Nostr Wallet Connect (NWC)](https://nwc.dev).
 
 ## Installation
 
 ```bash
-npm install @x402/lightning
+npm install @getalby/x402-lightning-mechanism
 ```
 
 ## Overview
@@ -25,7 +25,7 @@ This package provides three main components for handling x402 payments on the Li
 
 ## Package Exports
 
-### Main Package (`@x402/lightning`)
+### Main Package (`@getalby/x402-lightning-mechanism`)
 
 **V2 Protocol Support** – x402 v2 protocol with CAIP-2 network identifiers (`bip122:*`)
 
@@ -36,11 +36,11 @@ This package provides three main components for handling x402 payments on the Li
 **Types:**
 
 - `ExactLightningPayload` – The payment payload shape: `{ preimage: string; paymentHash: string }`
-- `LightningPaymentRequirementsExtra` – Extra fields on payment requirements: `{ invoice: string }`
+- `LightningPaymentRequirementsExtra` – Extra fields on payment requirements: `{ invoice: string, paymentMethod: string }`
 
 ### Subpath Exports
 
-- `@x402/lightning/exact/client` – `ExactLightningScheme` (client)
+- `@getalby/x402-lightning-mechanism/exact/client` – `ExactLightningScheme` (client)
 
 ## Supported Networks
 
@@ -93,7 +93,7 @@ Lightning payments are denominated in **satoshis** (`sat`) — the smallest indi
 ```typescript
 import { x402Client } from "@x402/core/client";
 import { NWCClient } from "@getalby/sdk/nwc";
-import { ExactLightningScheme } from "@x402/lightning/exact/client";
+import { ExactLightningScheme } from "@getalby/x402-lightning-mechanism/exact/client";
 
 const nwcUrl = "nostr+walletconnect://..."; // from wallet
 const nwcClient = new NWCClient({ nostrWalletConnectUrl: nwcUrl });
