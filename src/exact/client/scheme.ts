@@ -69,6 +69,7 @@ export class ExactLightningScheme implements SchemeNetworkClient {
 
     const payload: ExactLightningPayload = {
       preimage: response.preimage,
+      settledAt: Math.ceil(Date.now()/1000) // timestamp in seconds
     };
 
     return {
@@ -94,11 +95,16 @@ export class ExactLightningScheme implements SchemeNetworkClient {
       throw new Error(`Unsupported Lightning network: ${network}`);
     }
 
+    if (!extra.invoice) {
+      throw new Error(`Lightning invoice is missing in the extra field`);
+    }
+
     const invoice = new Invoice({ pr: extra.invoice as string });
 
-    if (invoice.satoshi.toString() != requirements.amount) {
+
+    if (invoice.millisatoshi.toString() != requirements.amount) {
       throw new Error(
-        `Invalid amount: ${invoice.satoshi}. expected ${requirements.amount}`
+        `Invalid amount: ${invoice.millisatoshi}. expected ${requirements.amount}`
       );
     }
   }

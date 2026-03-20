@@ -25,8 +25,8 @@ function buildRequirements(overrides: Partial<PaymentRequirements> = {}): Paymen
   return {
     scheme: "exact",
     network: LIGHTNING_MAINNET_CAIP2,
-    asset: "sat",
-    amount: "402",
+    asset: "BTC",
+    amount: "402000",
     payTo: "alice@getalby.com",
     maxTimeoutSeconds: 60,
     extra: {
@@ -90,7 +90,7 @@ describe("ExactLightningScheme (client)", () => {
 
     it("throws when extra.invoice is of an unexpected amount", async () => {
       const scheme = new ExactLightningScheme({ nwcClient: buildMockNwcClient() });
-      const requirements = buildRequirements({ amount: "100" });
+      const requirements = buildRequirements({ amount: "1001" });
       await expect(
         scheme.createPaymentPayload(SUPPORTED_X402_VERSION, requirements),
       ).rejects.toThrow(/Invalid amount: 402. expected 100/i);
